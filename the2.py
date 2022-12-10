@@ -1,8 +1,3 @@
-#
-# WRITE YOUR CODE HERE AND SEND ONLY THIS FILE TO US.
-#
-# DO NOT DEFINE get_data() here. Check before submitting
-
 import math
 import random
 random.seed(111)
