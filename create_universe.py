@@ -1,18 +1,13 @@
-#Watch the youtube video to learn how to use it 
-# Gokturk Ucoluk, METU, Dec 2020
-
 from tkinter import *
 import sys
 
 WINDOW_MAXIMAL_WIDTH = 1200
 WINDOW_MAXIMAL_HEIGHT= 1000
-M=50   # actual values shall be read from command line
+M=50 
 N=100
 
 SCALE = min(WINDOW_MAXIMAL_WIDTH/N,WINDOW_MAXIMAL_HEIGHT/M)
 RADIUS = max(1, SCALE//2)-1
-
-
 
 root = Tk()
 root.resizable(0,0)
@@ -80,7 +75,6 @@ def marking(event):
   global Mark_x, Mark_y, Last_x, Last_y, Line_item, Oval_item, Just_killed, Created_individual_count
   if Mark_x == None:
     Mark_x,Mark_y = event.x,event.y
-    # first, check from universe do we have a predefined entity here, if so delete it, also delete it from universe
     universe_row = canvas_to_universe(Mark_y)
     universe_col = canvas_to_universe(Mark_x)
     universe_content = Universe[universe_row][universe_col]
