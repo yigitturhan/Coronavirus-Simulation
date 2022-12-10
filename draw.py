@@ -1,8 +1,3 @@
-# 
-# YOU CAN PLAY AROUND WITH  "DELAY".
-# OTHERWISE, YOU SHOULDN'T UPDATE THIS FILE.
-# DO NOT SEND THIS FILE TO US.
-#
 from math import *
 from tkinter import *
 from evaluator import *
@@ -38,11 +33,9 @@ WINDOW_STEP = round(SCALE)
 RADIUS = max(1, SCALE//2)
 
 def draw_individual(canv,x,y,rad,out_color,in_color):
-	"""DO NOT MODIFY THIS FUNCTION"""
 	return canv.create_oval((x-rad),(y-rad),(x+rad),(y+rad),width=1, outline=out_color, fill=in_color)
 
 def redraw_individual(canv,item,x,y,rad,out_color,in_color):
-    """DO NOT MODIFY THIS FUNCTION"""
     canv.itemconfig(item,outline=out_color, fill=in_color)
     canv.coords(item,(x-rad),(y-rad),(x+rad),(y+rad))
 
@@ -56,8 +49,7 @@ def draw_legend(canvas):
   draw_one(canvas, 3+RADIUS, 3+RADIUS*7, "red", "red", "Not Masked & Infected")
   draw_one(canvas, 3+RADIUS, 3+RADIUS*10, "green", "green", "Not Masked & Not Infected")
 
-def draw_individuals(): #inialization of _individuals
-    """DO NOT MODIFY THIS FUNCTION"""    
+def draw_individuals(): #inialization of _individuals 
     global My_canvas, My__individuals, DATA, RADIUS, SCALE, DELAY
     My__individuals=[]   # hold tctk entities
     for [(x,y),last_move,mask_status, infection_status]  in DATA[6:][0]:
@@ -69,8 +61,7 @@ def draw_individuals(): #inialization of _individuals
     draw_legend(My_canvas)
     My_canvas.after(DELAY,callback)
 
-def move_individuals():
-    """DO NOT MODIFY THIS FUNCTION"""    
+def move_individuals():   
     global My__individuals, My_canvas
     new_universe = new_move() # the2.py  provides new_move()
     for i,[(x,y), last_move,mask_status, infection_status] in enumerate(new_universe):
@@ -80,8 +71,7 @@ def move_individuals():
         new_in_color = new_out_color if mask_status=="notmasked" else "white"
         redraw_individual(My_canvas, My__individuals[i], new_center_x, new_center_y, RADIUS, new_out_color, new_in_color)
         
-def callback():
-    """DO NOT MODIFY THIS FUNCTION"""    
+def callback(): 
     global My_canvas,DELAY
     move_individuals()
     My_canvas.after(DELAY,callback)
