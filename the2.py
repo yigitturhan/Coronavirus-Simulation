@@ -237,31 +237,30 @@ def new_move():
 			infectionstatusV3.append("infected")
 		if infectionstatus[i] == "notinfected":
 			for s in range(0,len(infectionstatus)):
-				if infectionstatus[s] == "infected":
-					if distance(correctplaceholder[i],correctplaceholder[s]) <= D:
-						if maskstatus[i] == "masked" and maskstatus[s] == "masked":
-							dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
-							olslk = min(1, k / (dstsqr))/(lmbda**2)
-							w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
-							infectionstatusV2.append(w[0])
-						if maskstatus[i] == "notmasked" and maskstatus[s] == "masked":
-							dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
-							olslk = min(1, k / (dstsqr))/(lmbda)
-							w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
-							infectionstatusV2.append(w[0])
-						if maskstatus[i] == "masked" and maskstatus[s] == "notmasked":
-							dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
-							olslk = min(1, k / (dstsqr))/(lmbda)
-							w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
-							infectionstatusV2.append(w[0])
-						if maskstatus[i] == "notmasked" and maskstatus[s] == "notmasked":
-							dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
-							olslk = min(1, k/(dstsqr))
-							w = random.choices(["infected", "notinfected"], weights=[olslk,(1-olslk)], k=1)
-							infectionstatusV2.append(w[0])
+				if infectionstatus[s] == "infected" and distance(correctplaceholder[i],correctplaceholder[s]) <= D:
+					if maskstatus[i] == "masked" and maskstatus[s] == "masked":
+						dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
+						olslk = min(1, k / (dstsqr))/(lmbda**2)
+						w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
+						infectionstatusV2.append(w[0])
+					if maskstatus[i] == "notmasked" and maskstatus[s] == "masked":
+						dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
+						olslk = min(1, k / (dstsqr))/(lmbda)
+						w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
+						infectionstatusV2.append(w[0])
+					if maskstatus[i] == "masked" and maskstatus[s] == "notmasked":
+						dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
+						olslk = min(1, k / (dstsqr))/(lmbda)
+						w = random.choices(["infected", "notinfected"], weights=[olslk, (1-olslk)], k=1)
+						infectionstatusV2.append(w[0])
+					if maskstatus[i] == "notmasked" and maskstatus[s] == "notmasked":
+						dstsqr = distance(correctplaceholder[i], correctplaceholder[s])**2
+						olslk = min(1, k/(dstsqr))
+						w = random.choices(["infected", "notinfected"], weights=[olslk,(1-olslk)], k=1)
+						infectionstatusV2.append(w[0])
 			if "infected" in infectionstatusV2:
 				infectionstatusV3.append("infected")
-			if "infected" not in infectionstatusV2:
+			else:
 				infectionstatusV3.append("notinfected")
 	#THE DATA GATHERING PART
 	universal_state = []
