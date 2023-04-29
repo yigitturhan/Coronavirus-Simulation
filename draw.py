@@ -1,7 +1,7 @@
 from math import *
 from tkinter import *
 from evaluator import *
-from the2num import *   # provides the new_move() which is called in move_individuals()
+from the2 import *   # provides the new_move() which is called in move_individuals()
 
 
 DELAY = 1000 # that is the default value, can be changed. It is in [miliseconds]
